@@ -6,8 +6,9 @@ public class Cuenta {
 	String titular;
 	Double saldo;
 	
-	public Cuenta(double saldo) {
+	public Cuenta(double saldo, String numero) {
 		this.saldo=saldo;
+		this.numero=numero;
 	}
 
 	public String getNumero() {
@@ -36,9 +37,15 @@ public class Cuenta {
 	
 	public void ingresar(Double i) {
 		saldo=saldo+i;
+		System.out.println("Saldo de " + saldo);
 	}
 	
 	public void retirar(Double i) {
-		saldo=saldo-i;	
+		if((saldo-i)>=(-500)) {
+			saldo=saldo-i;
+			System.out.println("Saldo de " + saldo);
+		}				
+		else
+			System.out.println("Fondos insuficientes (saldo "+ saldo +"€) en la cuenta "+ numero+ " para el integro de "+ i );
 	}
 }
